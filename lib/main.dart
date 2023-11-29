@@ -29,16 +29,32 @@ class MyHomePage extends StatelessWidget {
         title: const Text('Flutter Demo Home Page'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          buildRowWithIcons([Icons.people, Icons.people, Icons.people],
-              [Colors.red, Colors.green, Colors.blue]),
-          buildRowWithIcons([Icons.people, Icons.people, Icons.people],
-              [Colors.orange, Colors.purple, Colors.yellow]),
-          buildRowWithIcons([Icons.people, Icons.people, Icons.people],
-              [Colors.blue, Colors.green, Colors.red]),
-          buildRowWithIcons([Icons.people, Icons.people, Icons.people],
-              [Colors.yellow, Colors.purple, Colors.orange]),
+          Padding(
+            padding: const EdgeInsets.only(
+                top: 10, bottom: 10.0), // Espaçamento entre as linhas
+            child: buildRowWithIcons([Icons.people, Icons.people, Icons.people],
+                [Colors.red, Colors.green, Colors.blue]),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+                bottom: 10.0), // Espaçamento entre as linhas
+            child: buildRowWithIcons([Icons.people, Icons.people, Icons.people],
+                [Colors.orange, Colors.purple, Colors.yellow]),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+                bottom: 10.0), // Espaçamento entre as linhas
+            child: buildRowWithIcons([Icons.people, Icons.people, Icons.people],
+                [Colors.blue, Colors.green, Colors.red]),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+                bottom: 10.0), // Espaçamento entre as linhas
+            child: buildRowWithIcons([Icons.people, Icons.people, Icons.people],
+                [Colors.yellow, Colors.purple, Colors.orange]),
+          ),
         ],
       ),
     );
@@ -49,13 +65,12 @@ class MyHomePage extends StatelessWidget {
         'Icons and colors lists must have the same length');
 
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: List.generate(
         icons.length,
         (index) => Container(
-          width: MediaQuery.of(context).size.width / icons.length,
-          height: MediaQuery.of(context).size.width /
-              icons.length *
-              2, // Altura é o dobro da largura
+          width: 100.0,
+          height: 150.0,
           decoration: BoxDecoration(
             color: colors[index],
             border: Border.all(
@@ -64,12 +79,10 @@ class MyHomePage extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(8.0),
           ),
-          child: Center(
-            child: Icon(
-              icons[index],
-              size: 80.0,
-              color: Colors.black,
-            ),
+          child: Icon(
+            icons[index],
+            size: 20.0,
+            color: Colors.black,
           ),
         ),
       ),
