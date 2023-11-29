@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Box Decoration',
+      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -31,33 +31,12 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          buildRowWithIcons([
-            Icons.people,
-            Icons.people,
-            Icons.people
-          ], [
-            Color.fromARGB(255, 248, 248, 248),
-            Color.fromARGB(255, 175, 76, 167),
-            Colors.blue
-          ]),
-          buildRowWithIcons([
-            Icons.people,
-            Icons.people,
-            Icons.people
-          ], [
-            Color.fromARGB(255, 255, 0, 85),
-            Colors.purple,
-            Color.fromARGB(255, 59, 137, 255)
-          ]),
-          buildRowWithIcons([
-            Icons.people,
-            Icons.people,
-            Icons.people
-          ], [
-            Color.fromARGB(255, 243, 33, 149),
-            Color.fromARGB(255, 228, 188, 58),
-            Colors.red
-          ]),
+          buildRowWithIcons([Icons.people, Icons.people, Icons.people],
+              [Colors.red, Colors.green, Colors.blue]),
+          buildRowWithIcons([Icons.people, Icons.people, Icons.people],
+              [Colors.orange, Colors.purple, Colors.yellow]),
+          buildRowWithIcons([Icons.people, Icons.people, Icons.people],
+              [Colors.blue, Colors.green, Colors.red]),
           buildRowWithIcons([Icons.people, Icons.people, Icons.people],
               [Colors.yellow, Colors.purple, Colors.orange]),
         ],
@@ -70,12 +49,13 @@ class MyHomePage extends StatelessWidget {
         'Icons and colors lists must have the same length');
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: List.generate(
         icons.length,
         (index) => Container(
-          width: 100.0,
-          height: 150.0,
+          width: MediaQuery.of(context).size.width / icons.length,
+          height: MediaQuery.of(context).size.width /
+              icons.length *
+              2, // Altura é o dobro da largura
           decoration: BoxDecoration(
             color: colors[index],
             border: Border.all(
@@ -84,11 +64,12 @@ class MyHomePage extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(8.0),
           ),
-          padding: const EdgeInsets.all(0),
-          child: Icon(
-            icons[index],
-            size: 30.0,
-            color: Colors.black,
+          child: Center(
+            child: Icon(
+              icons[index],
+              size: 80.0,
+              color: Colors.black,
+            ),
           ),
         ),
       ),
